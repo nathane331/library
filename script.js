@@ -20,7 +20,7 @@ function Book(title, author, numberOfPages, read){
   this.numberOfPages = numberOfPages;
   this.read = read;
 
-  id = crypto.randomUUID();
+  id = self.crypto.randomUUID();
 
 
 };
@@ -35,21 +35,29 @@ function CreateBookEntry(title, author, numberOfPages, read)
 function CreateBookCard(book)
 {
     const cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
+    
+    console.log(book.id);
+
     const bookTitle = document.createElement("h2");
     const bookAuthor = document.createElement("h3");
     const numberPages = document.createElement("p");
     const finishedReading = document.createElement("p");
 
     bookTitle.textContent = book.title;
+    bookTitle.classList.add("book-title");
     cardDiv.appendChild(bookTitle);
 
     bookAuthor.textContent = book.author;
+    bookAuthor.classList.add("book-author");
     cardDiv.appendChild(bookAuthor);
 
     numberPages.textContent = book.numberOfPages;
+    numberPages.classList.add("number-pages");
     cardDiv.appendChild(numberPages);
 
     finishedReading.textContent = book.read;
+    finishedReading.classList.add("finished-reading");
     cardDiv.appendChild(finishedReading);
 
     mainContentPage.appendChild(cardDiv);
