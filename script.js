@@ -219,7 +219,7 @@ class LibraryDisplay{
         removeBookButton.appendChild(removeIcon);
         numberReadDiv.appendChild(removeBookButton);
         removeBookButton.addEventListener("click", ()=> {
-            RemoveBookEntry(book.id);
+            this.library.removeBookEntry(book.id);
         });
 
 
