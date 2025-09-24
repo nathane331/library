@@ -117,13 +117,13 @@ class LibraryDisplay{
 
         this.addBookModal = document.querySelector("dialog");
         const showAddBookModal = document.querySelector(".add-book");
-        showAddBookModal.addEventListener("click", () => {addBookModal.showModal();});
+        showAddBookModal.addEventListener("click", () => {this.addBookModal.showModal();});
 
 
         const formCancel = document.querySelector("#input-cancel");
         const formSubmit = document.querySelector("#input-submit");
 
-        formCancel.addEventListener("click", ()=> {addBookModal.close();});
+        formCancel.addEventListener("click", ()=> {this.addBookModal.close();});
         formSubmit.addEventListener("click", this.submitNewBook());
     }
 
