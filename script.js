@@ -57,57 +57,35 @@ class Book{
 class Library{
     constructor(){
         this.libraryArray = [];
+        console.log("Initialize Library.");
     }
 
     createBookEntry(title, author, numberOfPages, read){
         let newBookEntry = new Book(title, author, numberOfPages, read);
         this.libraryArray.push(newBookEntry);
+        console.log(newBookEntry);
+        //     ClearDisplay();
+        //     DisplayLibrary(myLibrary);
     }
 
     removeBookEntry(id){
 
         let removeIndex;
 
-        this.libraryArray.forEach(book => {2
+        this.libraryArray.forEach(book => {
             if(book.id == id){    
-            removeIndex = myLibrary.indexOf(book);
+            removeIndex = this.libraryArray.indexOf(book);
             } 
         })
 
-        let newLibrary = myLibrary.splice(removeIndex, 1);
+        let newLibrary = this.libraryArray.splice(removeIndex, 1);
+        console.log("Removed Entry from Library");
 
+        
     }
 
 }
 
-// function CreateBookEntry(title, author, numberOfPages, read)
-// {
-//     let newBook = new Book(title, author, numberOfPages, read);
-//     myLibrary.push(newBook);
-    
-// }
-
-// function RemoveBookEntry(id)
-// {
-//     let removeIndex;
-    
-//    myLibrary.forEach(book => {
-       
-//         if(book.id == id){
-                
-//             removeIndex = myLibrary.indexOf(book);
-//             console.log(removeIndex);
-//         } 
-//     })
-
-//     console.log(myLibrary[removeIndex]);
-//     let newLibrary = myLibrary.splice(removeIndex, 1);
-//     //console.log(newLibrary);
-   
-//     ClearDisplay();
-//     DisplayLibrary(myLibrary);
-
-// }
 
 class LibraryDisplay{
 
@@ -124,22 +102,25 @@ class LibraryDisplay{
         const formSubmit = document.querySelector("#input-submit");
 
         formCancel.addEventListener("click", ()=> {this.addBookModal.close();});
-        formSubmit.addEventListener("click", this.submitNewBook());
+        formSubmit.addEventListener("click", (event) =>{this.submitNewBook(this);});
+
+        console.log("Initialize Library Display.");
     }
 
-    submitNewBook(){
-
-        this.clearDisplay();
+    submitNewBook(libraryDisplay){
+        event.preventDefault();
+        libraryDisplay.updateDisplay();
         let title = newBookTitle.value;
         let author = newBookAuthor.value;
         let pages = newBookPages.value;
         let read = newBookRead.checked;
 
-        this.library.createBookEntry(title, author, pages, read);
-        // preventDefault();
-        this.addBookModal.close();
-        this.updateDisplay(this.library);
-
+        libraryDisplay.library.createBookEntry(title, author, pages, read);
+        
+        libraryDisplay.addBookModal.close();
+        libraryDisplay.updateDisplay(this.library);
+        console.log("Book Submitted.");
+        
     }
 
     
@@ -220,6 +201,8 @@ class LibraryDisplay{
         numberReadDiv.appendChild(removeBookButton);
         removeBookButton.addEventListener("click", ()=> {
             this.library.removeBookEntry(book.id);
+            this.updateDisplay();
+
         });
 
 
@@ -228,12 +211,10 @@ class LibraryDisplay{
     }
 
     updateDisplay(){
-        this.library.libraryArray.forEach((book) => this.createBookCard(book))
-        console.log(myLibrary);
-    }
-
-    clearDisplay(){
         mainContentPage.innerHTML = "";
+        console.log("Clear Display.");
+        this.library.libraryArray.forEach((book) => this.createBookCard(book))
+        console.log("Update Display.");
     }
 
 }
