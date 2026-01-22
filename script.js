@@ -90,8 +90,11 @@ class Library{
 class LibraryDisplay{
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.id = self.crypto.randomUUID();
 =======
+=======
+>>>>>>> 511cc86e4de173b20ac49b127016503529651198
     constructor(library){
 
         this.library = library;
@@ -99,6 +102,9 @@ class LibraryDisplay{
         this.addBookModal = document.querySelector("dialog");
         const showAddBookModal = document.querySelector(".add-book");
         showAddBookModal.addEventListener("click", () => {this.addBookModal.showModal();});
+<<<<<<< HEAD
+>>>>>>> 511cc86e4de173b20ac49b127016503529651198
+=======
 >>>>>>> 511cc86e4de173b20ac49b127016503529651198
 
 
@@ -225,8 +231,11 @@ class LibraryDisplay{
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 DisplayLibrary(myLibrary);
 =======
+=======
+>>>>>>> 511cc86e4de173b20ac49b127016503529651198
 // function CreateBookCard(book)
 // {
 //     const cardDiv = document.createElement("div");
@@ -324,5 +333,9 @@ DisplayLibrary(myLibrary);
 
 
 const myLibrary = new Library(); //create a library with a libraryArray inside. 
+<<<<<<< HEAD
+const myLibraryDisplay = new LibraryDisplay(myLibrary); //create a new libraryDisplay using myLibrary. 
+>>>>>>> 511cc86e4de173b20ac49b127016503529651198
+=======
 const myLibraryDisplay = new LibraryDisplay(myLibrary); //create a new libraryDisplay using myLibrary. 
 >>>>>>> 511cc86e4de173b20ac49b127016503529651198
