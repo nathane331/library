@@ -1,4 +1,4 @@
-// let myLibrary = [];
+let myLibrary = [];
 // const mainContentPage = document.querySelector(".main-content");
 
 
