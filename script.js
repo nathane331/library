@@ -20,7 +20,7 @@ function Book(title, author, numberOfPages, read){
   this.numberOfPages = numberOfPages;
   this.read = read;
 
-  id = self.crypto.randomUUID();
+  this.id = self.crypto.randomUUID();
 
 
 };
