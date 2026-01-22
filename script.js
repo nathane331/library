@@ -46,136 +46,27 @@ class Book{
         this.read = read;
         this.id = self.crypto.randomUUID();
 
-    }
 
-    toggleRead(){
-        console.log("toggle read");
-        read = !read;
-    }
-}
+};
 
-class Library{
-    constructor(){
-        this.libraryArray = [];
-        console.log("Initialize Library.");
-    }
-
-    createBookEntry(title, author, numberOfPages, read){
-        let newBookEntry = new Book(title, author, numberOfPages, read);
-        this.libraryArray.push(newBookEntry);
-        console.log(newBookEntry);
-        //     ClearDisplay();
-        //     DisplayLibrary(myLibrary);
-    }
-
-    removeBookEntry(id){
-
-        let removeIndex;
-
-        this.libraryArray.forEach(book => {
-            if(book.id == id){    
-            removeIndex = this.libraryArray.indexOf(book);
-            } 
-        })
-
-        let newLibrary = this.libraryArray.splice(removeIndex, 1);
-        console.log("Removed Entry from Library");
-
-        
-    }
-
+function CreateBookEntry(title, author, numberOfPages, read)
+{
+    let newBook = new Book(title, author, numberOfPages, read);
+    myLibrary.push(newBook);
 }
 
 
-class LibraryDisplay{
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-  this.id = self.crypto.randomUUID();
-=======
-=======
->>>>>>> 511cc86e4de173b20ac49b127016503529651198
-    constructor(library){
-
-        this.library = library;
-
-        this.addBookModal = document.querySelector("dialog");
-        const showAddBookModal = document.querySelector(".add-book");
-        showAddBookModal.addEventListener("click", () => {this.addBookModal.showModal();});
-<<<<<<< HEAD
->>>>>>> 511cc86e4de173b20ac49b127016503529651198
-=======
->>>>>>> 511cc86e4de173b20ac49b127016503529651198
-
-
-        const formCancel = document.querySelector("#input-cancel");
-        const formSubmit = document.querySelector("#input-submit");
-
-        formCancel.addEventListener("click", ()=> {this.addBookModal.close();});
-        formSubmit.addEventListener("click", (event) =>{this.submitNewBook(this);});
-
-        console.log("Initialize Library Display.");
-    }
-
-    submitNewBook(libraryDisplay){
-        event.preventDefault();
-        libraryDisplay.updateDisplay();
-        let title = newBookTitle.value;
-        let author = newBookAuthor.value;
-        let pages = newBookPages.value;
-        let read = newBookRead.checked;
-
-        libraryDisplay.library.createBookEntry(title, author, pages, read);
-        
-        libraryDisplay.addBookModal.close();
-        libraryDisplay.updateDisplay(this.library);
-        console.log("Book Submitted.");
-        
-    }
-
+function CreateBookCard(book)
+{
+    const cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
     
-    
-    createBookCard(book){
-        const cardDiv = document.createElement("div");
-        cardDiv.classList.add("card");
-        
-        cardDiv.id = book.id;
+    console.log(book.id);
 
-        const titleAuthorDiv = document.createElement("div");
-        titleAuthorDiv.classList.add("title-author-container");
-
-        const numberReadDiv = document.createElement("div");
-        numberReadDiv.classList.add("number-read-container");
-
-        const removeBookButton = document.createElement("button");
-        removeBookButton.classList.add("remove-book-button");
-        removeBookButton.setAttribute('data-id', book.id);
-        
-        const removeTooltip = document.createElement("span");
-        removeTooltip.classList.add("tooltip-text");
-        removeTooltip.textContent = "Remove from Library";
-
-        removeBookButton.appendChild(removeTooltip);
-
-        cardDiv.appendChild(titleAuthorDiv);
-        cardDiv.appendChild(numberReadDiv);
-
-
-        const bookTitle = document.createElement("h1");
-        const bookAuthor = document.createElement("h3");
-        const numberPages = document.createElement("p");
-        
-        const finishedReading = document.createElement("input");
-        finishedReading.setAttribute('type', "checkbox");
-        finishedReading.addEventListener('change', ()=> {
-            
-            book.toggleRead()
-        });
-
-
-        const bookIcon = document.createElement("span");
-        bookIcon.classList.add("material-symbols-outlined");
-        bookIcon.textContent = "book";
+    const bookTitle = document.createElement("h2");
+    const bookAuthor = document.createElement("h3");
+    const numberPages = document.createElement("p");
+    const finishedReading = document.createElement("p");
 
         bookTitle.textContent = book.title;
         bookTitle.classList.add("book-title");
@@ -216,126 +107,16 @@ class LibraryDisplay{
         });
 
 
-        mainContentPage.appendChild(cardDiv);
+    mainContentPage.appendChild(cardDiv);
+}
 
-    }
+function DisplayLibrary(library){
 
-    updateDisplay(){
-        mainContentPage.innerHTML = "";
-        console.log("Clear Display.");
-        this.library.libraryArray.forEach((book) => this.createBookCard(book))
-        console.log("Update Display.");
-    }
+    library.forEach((book) => CreateBookCard(book))
 
 }
 
+CreateBookEntry("Dracula", "Bram Stoker", 300, true);
+CreateBookEntry("Salem's Lot", "Stephen King", 476, false);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 DisplayLibrary(myLibrary);
-=======
-=======
->>>>>>> 511cc86e4de173b20ac49b127016503529651198
-// function CreateBookCard(book)
-// {
-//     const cardDiv = document.createElement("div");
-//     cardDiv.classList.add("card");
-    
-//     cardDiv.id = book.id;
-
-//     const titleAuthorDiv = document.createElement("div");
-//     titleAuthorDiv.classList.add("title-author-container");
-
-//     const numberReadDiv = document.createElement("div");
-//     numberReadDiv.classList.add("number-read-container");
-
-//     const removeBookButton = document.createElement("button");
-//     removeBookButton.classList.add("remove-book-button");
-//     removeBookButton.setAttribute('data-id', book.id);
-    
-//     const removeTooltip = document.createElement("span");
-//     removeTooltip.classList.add("tooltip-text");
-//     removeTooltip.textContent = "Remove from Library";
-
-//     removeBookButton.appendChild(removeTooltip);
-
-//     cardDiv.appendChild(titleAuthorDiv);
-//     cardDiv.appendChild(numberReadDiv);
-
-
-//     const bookTitle = document.createElement("h1");
-//     const bookAuthor = document.createElement("h3");
-//     const numberPages = document.createElement("p");
-    
-//     const finishedReading = document.createElement("input");
-//     finishedReading.setAttribute('type', "checkbox");
-//     finishedReading.addEventListener('change', ()=> {
-        
-//         book.toggleRead()
-//     });
-
-
-//     const bookIcon = document.createElement("span");
-//     bookIcon.classList.add("material-symbols-outlined");
-//     bookIcon.textContent = "book";
-
-//     bookTitle.textContent = book.title;
-//     bookTitle.classList.add("book-title");
-//     titleAuthorDiv.appendChild(bookIcon);
-//     titleAuthorDiv.appendChild(bookTitle);
-
-//     bookAuthor.textContent = book.author;
-//     bookAuthor.classList.add("book-author");
-//     titleAuthorDiv.appendChild(bookAuthor);
-
-//     numberPages.textContent = book.numberOfPages + ' pages';
-//     numberPages.classList.add("number-pages");
-//     numberReadDiv.appendChild(numberPages);
-
-
-    
-//     if(book.read == true){
-//         finishedReading.checked = true;
-//     }
-//     else{
-//         finishedReading.checked = false;
-//     }
-
-//     finishedReading.classList.add("finished-reading");
-//     numberReadDiv.appendChild(finishedReading);
-
-    
-//     const removeIcon = document.createElement("span");
-//     removeIcon.classList.add("material-symbols-outlined");
-//     removeIcon.textContent = "close";
-
-//     removeBookButton.appendChild(removeIcon);
-//     numberReadDiv.appendChild(removeBookButton);
-//     removeBookButton.addEventListener("click", ()=> {
-//         RemoveBookEntry(book.id);
-//     });
-
-
-//     mainContentPage.appendChild(cardDiv);
-// }
-
-// function ClearDisplay(){
-//     mainContentPage.innerHTML = "";
-// }
-
-
-// function DisplayLibrary(library){
-
-//     library.forEach((book) => CreateBookCard(book))
-//     console.log(myLibrary);
-
-// }
-
-
-const myLibrary = new Library(); //create a library with a libraryArray inside. 
-<<<<<<< HEAD
-const myLibraryDisplay = new LibraryDisplay(myLibrary); //create a new libraryDisplay using myLibrary. 
->>>>>>> 511cc86e4de173b20ac49b127016503529651198
-=======
-const myLibraryDisplay = new LibraryDisplay(myLibrary); //create a new libraryDisplay using myLibrary. 
->>>>>>> 511cc86e4de173b20ac49b127016503529651198
