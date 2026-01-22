@@ -46,8 +46,8 @@ class Book{
         this.read = read;
         this.id = self.crypto.randomUUID();
 
-
-};
+    }
+}
 
 function CreateBookEntry(title, author, numberOfPages, read)
 {
